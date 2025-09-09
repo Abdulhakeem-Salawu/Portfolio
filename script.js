@@ -17,11 +17,23 @@ function initializeTheme() {
 function setupThemeToggle() {
   const toggle = document.getElementById("theme-toggle");
   if (!toggle) return;
+  const iconEl = toggle.querySelector('.icon');
+
+  const applyUi = (theme) => {
+    if (iconEl) iconEl.textContent = theme === 'dark' ? '🌞' : '🌙';
+    toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    toggle.setAttribute('title', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  };
+
+  // Set initial UI state
+  applyUi(document.documentElement.getAttribute('data-theme'));
+
   toggle.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme");
     const next = current === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
+    applyUi(next);
   });
 }
 
