@@ -56,53 +56,53 @@ function setupSmoothScroll() {
   });
 }
 
-function setupContactForm() {
-  const form = document.getElementById("contact-form");
-  const statusEl = document.getElementById("form-status");
-  if (!form) return;
+// function setupContactForm() {
+//   const form = document.getElementById("contact-form");
+//   const statusEl = document.getElementById("form-status");
+//   if (!form) return;
 
-  const FORM_ENDPOINT = "https://formspree.io/f/xnnbwprv";
+//   const FORM_ENDPOINT = "https://formspree.io/f/xnnbwprv";
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (!statusEl) return;
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
-    const email = String(payload.email || "").trim();
-    const name = String(payload.name || "").trim();
-    const message = String(payload.message || "").trim();
-    if (!name || !email || !message) {
-      statusEl.textContent = "Please fill in all fields.";
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      statusEl.textContent = "Please enter a valid email.";
-      return;
-    }
+//   form.addEventListener("submit", async (e) => {
+//     e.preventDefault();
+//     if (!statusEl) return;
+//     const formData = new FormData(form);
+//     const payload = Object.fromEntries(formData.entries());
+//     const email = String(payload.email || "").trim();
+//     const name = String(payload.name || "").trim();
+//     const message = String(payload.message || "").trim();
+//     if (!name || !email || !message) {
+//       statusEl.textContent = "Please fill in all fields.";
+//       return;
+//     }
+//     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+//       statusEl.textContent = "Please enter a valid email.";
+//       return;
+//     }
 
-    statusEl.textContent = "Sending…";
+//     statusEl.textContent = "Sending…";
 
-    try {
-      if (FORM_ENDPOINT.includes("xnnbwprv")) {
-        statusEl.textContent = "Form endpoint not configured. Replace 'yourid' with your Formspree ID.";
-        return;
-      }
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (res.ok) {
-        form.reset();
-        statusEl.textContent = "Thanks! Your message has been sent.";
-      } else {
-        statusEl.textContent = "Something went wrong. Please try again later.";
-      }
-    } catch (err) {
-      statusEl.textContent = "Network error. Please try again.";
-    }
-  });
-}
+//     try {
+//       if (FORM_ENDPOINT.includes("xnnbwprv")) {
+//         statusEl.textContent = "Form endpoint not configured. Replace 'yourid' with your Formspree ID.";
+//         return;
+//       }
+//       const res = await fetch(FORM_ENDPOINT, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json", Accept: "application/json" },
+//         body: JSON.stringify(payload),
+//       });
+//       if (res.ok) {
+//         form.reset();
+//         statusEl.textContent = "Thanks! Your message has been sent.";
+//       } else {
+//         statusEl.textContent = "Something went wrong. Please try again later.";
+//       }
+//     } catch (err) {
+//       statusEl.textContent = "Network error. Please try again.";
+//     }
+//   });
+// }
 
 function setYear() {
   const y = document.getElementById("year");
