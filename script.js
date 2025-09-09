@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
   setupMobileNav();
   setupSmoothScroll();
-  setupContactForm();
+  // setupContactForm();
   setYear();
 });
 
