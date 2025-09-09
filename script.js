@@ -61,7 +61,7 @@ function setupContactForm() {
   const statusEl = document.getElementById("form-status");
   if (!form) return;
 
-  const FORM_ENDPOINT = "https://formspree.io/f/yourid";
+  const FORM_ENDPOINT = "https://formspree.io/f/xnnbwprv";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -83,7 +83,7 @@ function setupContactForm() {
     statusEl.textContent = "Sending…";
 
     try {
-      if (FORM_ENDPOINT.includes("yourid")) {
+      if (FORM_ENDPOINT.includes("xnnbwprv")) {
         statusEl.textContent = "Form endpoint not configured. Replace 'yourid' with your Formspree ID.";
         return;
       }
