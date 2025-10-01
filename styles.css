@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --bg: #ffffff;
   --text: #0b0f14;
   --muted: #6b7280;
@@ -8,7 +8,7 @@
   --radius: 12px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   --container: 1100px;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
